@@ -56,8 +56,8 @@ public class ShowCaseController {
     }
 
     @RequestMapping(value = "/create", method= RequestMethod.GET)
-    public String showCaseCreate() {
-        return "/showCaseCreate";
+    public @ResponseBody ShowCaseForm showCaseCreate() {
+        return new ShowCaseForm();
     }
 
     @RequestMapping(value = "/create/action", method= RequestMethod.POST, produces="application/json")

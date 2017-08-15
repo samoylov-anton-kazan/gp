@@ -65,14 +65,15 @@
                             </div>
                             <div ng-show="isSet(2)">
                                 <div id="profile">
-                                    <button class="btn btn-primary pull-right" style="margin-top:10px;" onclick="window.location.href='/showCase/create'">Добавить витрину</button>
+                                    <button class="btn btn-primary pull-right" style="margin-top:10px;">
+                                        <a href="#!/profile/showCase/create" style="color: white;">Добавить витрину</a></button>
                                     <div ng-repeat="caseModelList in profile.caseModelList">
                                         <div class="jumbotron">
                                             <div class="panel panel-default" style="margin-top: 10px;">
                                                 <div class="panel-body">
                                                     <span><p>{{caseModelList.name}}</p></span>
                                                     <button class="btn btn-primary pull-right" style="margin-top:10px;">
-                                                        <a href="#!/showCase/edit/{{caseModelList.id}}">Редактировать</a>
+                                                        <a href="#!/profile/showCase/edit/{{caseModelList.id}}" style="color: white;">Редактировать</a>
                                                     </button>
                                                 </div>
                                             </div>

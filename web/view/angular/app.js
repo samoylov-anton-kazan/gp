@@ -14,9 +14,13 @@ app.config(['$routeProvider', function($routeProvider) {
             templateUrl:"/view/angular/showCaseView.html",
             controller:"ShowCase"
         })
-        .when('/showCase/edit/:showCaseId', {
+        .when('/profile/showCase/edit/:showCaseId', {
             templateUrl:"/view/angular/showCaseEdit.html",
             controller:"ShowCaseEdit"
+        })
+        .when('/profile/showCase/create', {
+            templateUrl:"/view/angular/showCaseCreate.html",
+            controller:"ShowCaseCreate"
         });
 
 }]);
@@ -60,6 +64,7 @@ app.controller('ShowCaseEdit',function ($scope, $routeParams, $http){
         url: '/showCase/edit/' + $routeParams.showCaseId
     }).then(function (response){
         $scope.showCase = response.data;
+        document.getElementById('sel').value = response.data.type;
     },function (error){
 
     });
@@ -70,7 +75,34 @@ app.controller('ShowCaseEdit',function ($scope, $routeParams, $http){
         $http.post('/showCase/edit/action', data, {
             headers: { 'Content-Type': 'application/json; charset=UTF-8'}
         }).then(function(responseData) {
-            //do stuff with response
+            $("div#showMessage").toggle();
+            $scope.message = 'Сохранено';
+            setTimeout(function(){
+                $("div#showMessage").toggle();
+                $scope.message = '';
+            }, 2000);
+        });
+    };
+});
+
+app.controller('ShowCaseCreate',function ($scope, $http, $window){
+
+    $http({
+        method: 'GET',
+        url: '/showCase/create'
+    }).then(function (response){
+        $scope.showCase = response.data;
+    },function (error){
+
+    });
+
+    $scope.createNewShowCase = function () {
+        var data = {id: $scope.showCase.id, name: $scope.showCase.name, minSum: $scope.showCase.minSum,
+            note: $scope.showCase.note, showCaseTypeId: $('select[name="type"]').val()};
+        $http.post('/showCase/create/action', data, {
+            headers: { 'Content-Type': 'application/json; charset=UTF-8'}
+        }).then(function(responseData) {
+            $window.location.href ='#!/profile/showCase/edit/' + responseData.data;
         });
     };
 });
