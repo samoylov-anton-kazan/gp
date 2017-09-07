@@ -22,10 +22,11 @@ public class ShowCaseServiceImpl implements ShowCaseService {
     private EntityManager entityManager;
 
     @Override
-    public Integer saveShowCase(ShowCaseDTO showCase){
+    public Integer saveShowCase(ShowCaseDTO showCase, Integer userId){
         ShowCaseEntity showCaseEntity;
         if (showCase.getId() == null) {
             showCaseEntity = new ShowCaseEntity();
+            showCaseEntity.setUserId(userId);
             showCaseEntity.populateFrom(showCase);
             entityManager.persist(showCaseEntity);
         } else {

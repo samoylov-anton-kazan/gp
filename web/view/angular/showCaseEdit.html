@@ -26,9 +26,6 @@
             <textarea class="form-control" rows="3" ng-model="showCase.note" id="showCaseNote" name="note">{{showCase.note}}</textarea>
         </div>
     </form>
-    <script type="text/javascript">
-
-    </script>
     <button type="submit" data-toggle="modal" data-target="#addPhoto" class="btn btn-primary pull-left" style="margin-bottom: 10px;">Добавить фото</button>
     <div class="modal fade" role="dialog" id="addPhoto" tabindex="-1" aria-labelledby="gridModalLabel"
          data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5); display: none;">
@@ -39,7 +36,7 @@
                             aria-hidden="true">×</span></button>
                     <h4 class="modal-title" id="cityModalLabel">Добавить фото</h4></div>
 
-                <form action="/showCase/file-upload/${modelValue.id}" method="POST" enctype="multipart/form-data">
+                <form>
                     <label class="custom-file-upload" style="display: inline-block; padding: 6px 12px; cursor: pointer;">
                                         <span class="btn btn-primary btn-file">
                                             Выбрать...<input type="file" id="files" name="files" style="display: none;"/>
@@ -83,7 +80,7 @@
 
                     </script>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="submit" class="btn btn-primary" ng-click="addPhoto(files)">Сохранить</button>
                     </div>
                 </form>
 

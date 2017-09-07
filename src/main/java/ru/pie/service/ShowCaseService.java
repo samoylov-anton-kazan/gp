@@ -9,7 +9,7 @@ import java.util.List;
  * Created by user on 02.03.17.
  */
 public interface ShowCaseService {
-    Integer saveShowCase(ShowCaseDTO showCase);
+    Integer saveShowCase(ShowCaseDTO showCase, Integer userId);
     ShowCaseDTO getShowCaseEdit(Integer showCaseId);
     List<ShowCaseModel> getShowCaseList(Integer cityId);
     List<ShowCaseModel> getCaseListByUserId(Integer userId);

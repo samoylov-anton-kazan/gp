@@ -83,6 +83,19 @@ app.controller('ShowCaseEdit',function ($scope, $routeParams, $http){
             }, 2000);
         });
     };
+
+    $scope.addPhoto = function () {
+        var fd = new FormData();
+        fd.append('files', document.getElementById("files").files[0]);
+        $http.post('/showCase/file-upload/' + $scope.showCase.id, fd, {
+            headers: { 'Content-Type': undefined },
+            transformRequest: angular.identity
+        })
+            .success(function(){
+            })
+            .error(function(){
+            });
+    };
 });
 
 app.controller('ShowCaseCreate',function ($scope, $http, $window){

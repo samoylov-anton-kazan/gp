@@ -52,7 +52,7 @@ public class ShowCaseController {
 
     @RequestMapping(value = "/edit/action", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody Integer showCaseEditAction(@RequestBody  ShowCaseDTO form) {
-        return showCaseService.saveShowCase(form);
+        return showCaseService.saveShowCase(form, userId);
     }
 
     @RequestMapping(value = "/create", method= RequestMethod.GET)
@@ -62,7 +62,7 @@ public class ShowCaseController {
 
     @RequestMapping(value = "/create/action", method= RequestMethod.POST, produces="application/json")
     public @ResponseBody Integer showCaseCreateAction(@RequestBody  ShowCaseDTO form) {
-        return showCaseService.saveShowCase(form);
+        return showCaseService.saveShowCase(form, userId);
     }
 
     @RequestMapping(value = "/{id}", method= RequestMethod.GET, produces="application/json")
